@@ -13,7 +13,6 @@ public class Prefeber : MonoBehaviour
     [SerializeField] float maxBalls = 20;
     [SerializeField] float maxMauzis = 3;
 
-
     private Vector3 posPrefab;
     private Quaternion rotPrefab;
 
@@ -24,7 +23,7 @@ public class Prefeber : MonoBehaviour
         {
             posPrefab = new Vector3(Random.Range(-posRange, posRange), startPosY, Random.Range(-posRange, posRange));
             rotPrefab = Quaternion.Euler(0, Random.Range(-eulerRange, eulerRange), 0);
-            Transform tmppokeball = Instantiate(BallPrefab, posPrefab, rotPrefab);
+            Transform tmpPokeball = Instantiate(BallPrefab, posPrefab, rotPrefab);
         }
 
         for (int i = 0; i < maxMauzis; i++)
@@ -32,7 +31,7 @@ public class Prefeber : MonoBehaviour
             posPrefab = new Vector3(Random.Range(-posRange, posRange), startPosY, Random.Range(-posRange, posRange));
             rotPrefab = Quaternion.Euler(0, Random.Range(-eulerRange, eulerRange), 0);
             Transform tmpMauzi = Instantiate(MauziPrefab, posPrefab, MauziPrefab.rotation);
-            tmpMauzi.GetComponent<Hunter>().Player = Hunted;
+            tmpMauzi.GetComponent<PathfindHunter>().Hunted = Hunted;
         }
 
     }
